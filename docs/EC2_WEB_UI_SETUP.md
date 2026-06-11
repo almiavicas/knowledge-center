@@ -311,6 +311,42 @@ If `OPENAI_API_KEY` was empty during bootstrap, the script skips `gbrain init`.
 After adding the key to `/etc/gbrain-agent/env`, follow the manual initialization
 steps in [OPENAI_SETUP.md](OPENAI_SETUP.md).
 
+### Bootstrap failed with `serve: command not found`
+
+This means `/etc/gbrain-agent/env` has an old unquoted command value:
+
+```bash
+GBRAIN_MCP_COMMAND=gbrain serve
+```
+
+Edit the file:
+
+```bash
+sudo nano /etc/gbrain-agent/env
+```
+
+Change the line to:
+
+```bash
+GBRAIN_MCP_COMMAND="gbrain serve"
+```
+
+Then rerun bootstrap from the repository root:
+
+```bash
+sudo ./infra/ec2/bootstrap.sh
+```
+
+### Bootstrap failed with `unzip is required to install bun`
+
+Install the missing package, then rerun bootstrap from the repository root:
+
+```bash
+sudo apt-get update
+sudo apt-get install -y unzip
+sudo ./infra/ec2/bootstrap.sh
+```
+
 ### You changed the security group but SSH still fails
 
 Your public IP may have changed. Update the security group SSH rule so the source

@@ -30,7 +30,7 @@ if ! command -v apt-get >/dev/null 2>&1; then
 fi
 
 apt-get update
-apt-get install -y ca-certificates curl git rsync build-essential sudo
+apt-get install -y ca-certificates curl git rsync build-essential sudo unzip
 
 if ! command -v node >/dev/null 2>&1 || ! node --version | grep -Eq '^v24\.'; then
   curl -fsSL https://deb.nodesource.com/setup_24.x | bash -
