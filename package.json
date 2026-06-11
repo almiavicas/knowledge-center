@@ -1,0 +1,20 @@
+{
+  "name": "gbrain-ec2-agent-template",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Single-EC2 AI agent template using GBrain as local memory.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "workspaces": [
+    "apps/web"
+  ],
+  "scripts": {
+    "dev": "npm --workspace apps/web run dev",
+    "start": "npm --workspace apps/web run start",
+    "check": "npm --workspace apps/web run check",
+    "expense:write": "node scripts/write-expense-page.mjs"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}

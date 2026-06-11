@@ -1,0 +1,19 @@
+[Unit]
+Description=Local AI Agent Runtime
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=gbrain
+Group=gbrain
+WorkingDirectory=/opt/gbrain-agent/app
+EnvironmentFile=/etc/gbrain-agent/env
+Environment=HOME=/opt/gbrain-agent
+ExecStart=/usr/local/bin/gbrain-agent-runtime
+Restart=always
+RestartSec=5
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

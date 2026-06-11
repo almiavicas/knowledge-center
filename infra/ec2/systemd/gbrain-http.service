@@ -1,0 +1,19 @@
+[Unit]
+Description=GBrain HTTP MCP Server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=gbrain
+Group=gbrain
+WorkingDirectory=/opt/gbrain-agent
+EnvironmentFile=/etc/gbrain-agent/env
+Environment=HOME=/opt/gbrain-agent
+ExecStart=/bin/bash -lc 'export PATH="$HOME/.bun/bin:/usr/local/bin:/usr/bin:/bin:$PATH"; exec gbrain serve --http --bind "${GBRAIN_HTTP_BIND:-127.0.0.1}" --port "${GBRAIN_HTTP_PORT:-3131}"'
+Restart=always
+RestartSec=5
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

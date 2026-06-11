@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GBrain Expense Console</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <main class="shell">
+      <aside class="rail" aria-label="Workspace">
+        <div class="brand">
+          <span class="mark" aria-hidden="true">G</span>
+          <div>
+            <p class="eyebrow">Local brain</p>
+            <h1>Expense Console</h1>
+          </div>
+        </div>
+
+        <section class="status-panel" aria-label="Runtime status">
+          <div class="status-row">
+            <span class="dot" id="agentDot"></span>
+            <span id="agentStatus">Checking agent</span>
+          </div>
+          <div class="metric">
+            <span>Memory</span>
+            <strong>GBrain stdio</strong>
+          </div>
+          <div class="metric">
+            <span>Access</span>
+            <strong>SSH tunnel</strong>
+          </div>
+        </section>
+
+        <section class="prompt-bank" aria-label="Starter prompts">
+          <button type="button" data-prompt="Capture this food receipt as a GBrain markdown invoice: merchant Green Market, date today, eggs 6.49, rice 8.20, apples 5.15, total 19.84.">
+            Capture receipt
+          </button>
+          <button type="button" data-prompt="Search my GBrain expense pages and summarize grocery spending this week.">
+            Weekly grocery total
+          </button>
+          <button type="button" data-prompt="Which merchants show up most often in my food invoice pages?">
+            Frequent merchants
+          </button>
+        </section>
+      </aside>
+
+      <section class="workspace" aria-label="Chat">
+        <div class="ledger-header">
+          <div>
+            <p class="eyebrow">Agent session</p>
+            <h2>Food expenses</h2>
+          </div>
+          <button class="icon-button" id="clearButton" type="button" title="Clear chat" aria-label="Clear chat">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+
+        <div class="messages" id="messages" aria-live="polite"></div>
+
+        <form class="composer" id="chatForm">
+          <label class="sr-only" for="messageInput">Message</label>
+          <textarea id="messageInput" rows="3" placeholder="Paste a receipt or ask about food spending"></textarea>
+          <button type="submit">Send</button>
+        </form>
+      </section>
+    </main>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
